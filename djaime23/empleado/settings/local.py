@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://app-web-jaime.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['https://jaime-sfhm.onrender.com', '127.0.0.1', 'localhost']
 
 
 ROOT_URLCONF = 'empleado.urls'
