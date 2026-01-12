@@ -9,6 +9,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['https://app-web-jaime.onrender.com', '127.0.0.1', 'localhost']
 
 
+ROOT_URLCONF = 'empleado.urls'
+
+
+
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
