@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Departamentos{% endblock %}
+
+{% block content %}
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Departamentos</h1>
+            
+            <div class="callout">
+                <table class="hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Shorname</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for departamento in departamentos %}
+                        <tr>
+                            <td>{{ departamento.nombre }}</td>
+                            <td>{{ departamento.subnombre }}</td>
+                            <td>
+                                {% if departamento.activo %}
+                                    <span class="success label">Activo</span>
+                                {% else %}
+                                    <span class="alert label">Inactivo</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No hay departamentos</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <div class="button-group">
+                    <a href="{% url 'departamento_app:nuevo_departamento' %}" class="button">
+                        Nuevo Departamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

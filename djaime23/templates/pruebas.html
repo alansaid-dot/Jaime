@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Listado de elementos de una base de datos</h1>
+
+     {{ lita_prueba }}
+
+  <ul>
+      {% for prueba in lita_prueba %}
+        <li>
+           {{ prueba.titulo}}
+        </li>
+      {% endfor %}
+     
+</ul>
+</body>
+</html>

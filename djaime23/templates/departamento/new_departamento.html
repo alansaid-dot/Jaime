@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Departamento{% endblock %}
+
+{% block content %}
+<!-- Ajusta esta línea según donde tengas tu header.html -->
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x">
+        <!-- Formulario principal -->
+        <div class="cell large-8">
+            <h1>Registrar Nuevo Departamento</h1>
+            
+            <form method="POST" class="callout">{% csrf_token %}
+                <div class="grid-x grid-margin-x">
+                    <!-- Primera fila: Nombre y Apellidos -->
+                    <div class="medium-6 cell">
+                        <label>
+                            <strong>Nombre:</strong>
+                            {{ form.nombre }}
+                            {% if form.nombre.errors %}
+                            <small class="error">{{ form.nombre.errors }}</small>
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="medium-6 cell">
+                        <label>
+                            <strong>Apellidos:</strong>
+                            {{ form.apellidos }}
+                            {% if form.apellidos.errors %}
+                            <small class="error">{{ form.apellidos.errors }}</small>
+                            {% endif %}
+                        </label>
+                    </div>
+                    
+                    <!-- Segunda fila: Departamento y Shorname -->
+                    <div class="medium-6 cell">
+                        <label>
+                            <strong>Departamento:</strong>
+                            {{ form.departamento }}
+                            {% if form.departamento.errors %}
+                            <small class="error">{{ form.departamento.errors }}</small>
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="medium-6 cell">
+                        <label>
+                            <strong>Shorname:</strong>
+                            {{ form.shorname }}
+                            {% if form.shorname.errors %}
+                            <small class="error">{{ form.shorname.errors }}</small>
+                            {% endif %}
+                        </label>
+                    </div>
+                    
+                    <!-- Botón -->
+                    <div class="cell">
+                        <button type="submit" class="button">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Información adicional y tabla -->
+        <div class="cell large-4">
+            <div class="callout secondary">
+                <h5>Información</h5>
+                <p>Al crear un nuevo departamento, también se creará automáticamente un empleado administrador para ese departamento.</p>
+            </div>
+            
+            <div class="callout">
+                <h5>Departamentos existentes</h5>
+                <table class="hover">
+                    <thead>
+                        <tr>
+                            <th>Departamento</th>
+                            <th>Shorname</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for depto in departamentos %}
+                        <tr>
+                            <td>{{ depto.nombre }}</td>
+                            <td>{{ depto.shorname }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No hay departamentos registrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
